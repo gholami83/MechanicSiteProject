@@ -12,6 +12,8 @@ import SignUpFormComponent from "./components/signup";
 import LogInFormComponent from "./components/login";
 import AboutComponent from "./components/about";
 import NotFoundComponent from "./components/notfound";
+import MechinesComponent from "./components/mechines-list";
+import MechineComponent from "./components/Mechine";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/signup" element={ <SignUpFormComponent/> }/>
         <Route path="/login" element={ <LogInFormComponent/> }/>
         {/* <Route path="/user" Component={ User }></Route> */}
+        <Route path="/mechines" element={ <MechinesComponent/> }/>
+        <Route path="/mechines/:mechineId" element={ <MechineComponent/> }/>
         <Route path="/about" element={ <AboutComponent/> }/>
         <Route path="*" element={ <NotFoundComponent/> }/>
 
