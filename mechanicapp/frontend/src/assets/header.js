@@ -20,7 +20,7 @@ function Header() {
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse p-2 bg-info " id="navbarSupportedContent">
+      <div class="collapse navbar-collapse p-2 bg-info rounded-3" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">
