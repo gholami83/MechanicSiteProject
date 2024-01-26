@@ -1374,13 +1374,16 @@ export default function MechinesComponent() {
           <div className="">
             {seasons.map((season) => (
               <div
-                onClick={() => handleclick(season.id)}
-                class="link-danger icon-link-hover bg-info m-1 p-2 list-size rounded-3"
-                key={season.id}
+              onClick={() => handleclick(season.id)}
+              class="link-danger icon-link-hover bg-info m-1 p-2 list-size rounded-3"
+              key={season.id}
               >
-                {season.id}
-                <br></br>
-                {season.title}
+                  <div className="display-image">
+                  <img className="card-img display-image" src={require('../assets/images/card1.jpg')} alt="Description" />
+                  </div>
+                  <div className="fw-bolder display-text">
+                  {season.title}
+                  </div>
               </div>
             ))}
           </div>

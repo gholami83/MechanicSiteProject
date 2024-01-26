@@ -1,8 +1,16 @@
 .list-size{
-    width: 48%;
+    width: 80%;
     height: 100%;
     display: inline-flex;
 }
 li{
     list-style: none;
+}
+.display-image{
+    display: inline;
+    width: 70%;
+}
+.display-text{
+    display: inline;
+    width: 75%;
 }

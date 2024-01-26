@@ -23,8 +23,8 @@ const About = () => {
             {/* Repeat the following block for each team member */}
             <div className="col-sm-5 col-md-3">
               <div className="thumbnail">
-                <img src={require('../assets/images/600x400.png')} alt="Description" />
-                <img className='team-pic' src={require('../assets/images/place.png')} alt="Description" />
+                <img src={require('../assets/images/Programmer-Flat-Icon-Graphics-13376618-1-1-580x387.jpg')} alt="Description" />
+                <img className='team-pic' src={require('../assets/images/developer.png')} alt="Description" />
 
                 <div className="caption">
                  <h3>Yasin ShamsZadeh</h3>
@@ -42,8 +42,8 @@ const About = () => {
 
             <div className="col-sm-5 col-md-3">
               <div className="thumbnail">
-                <img src={require('../assets/images/600x400.png')} alt="Description" />
-                <img className='team-pic' src={require('../assets/images/place.png')} alt="Description" />
+                <img src={require('../assets/images/Programmer-Flat-Icon-Graphics-13376618-1-1-580x387.jpg')} alt="Description" />
+                <img className='team-pic' src={require('../assets/images/developer.png')} alt="Description" />
 
                 <div className="caption">
                  <h3>Hosein Qolami</h3>
@@ -60,8 +60,8 @@ const About = () => {
 
             <div className="col-sm-5 col-md-3">
               <div className="thumbnail">
-                <img src={require('../assets/images/600x400.png')} alt="Description" />
-                <img className='team-pic' src={require('../assets/images/place.png')} alt="Description" />
+                <img src={require('../assets/images/Programmer-Flat-Icon-Graphics-13376618-1-1-580x387.jpg')} alt="Description" />
+                <img className='team-pic' src={require('../assets/images/developer.png')} alt="Description" />
 
                 <div className="caption">
                  <h3>Hosein KazemZadeh</h3>
@@ -78,8 +78,8 @@ const About = () => {
 
             <div className="col-sm-5 col-md-3">
               <div className="thumbnail">
-                <img src={require('../assets/images/600x400.png')} alt="Description" />
-                <img className='team-pic' src={require('../assets/images/place.png')} alt="Description" />
+                <img src={require('../assets/images/Programmer-Flat-Icon-Graphics-13376618-1-1-580x387.jpg')} alt="Description" />
+                <img className='team-pic' src={require('../assets/images/developer.png')} alt="Description" />
 
                 <div className="caption">
                  <h3>Arman QoliZadeh</h3>
