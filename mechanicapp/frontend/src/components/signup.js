@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SignUpForm() {
+function SignUpForm(props) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    username: '',
+    password:'',
     // Add other fields as necessary
   });
+  
+  
+  
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevFormData => ({
@@ -21,33 +22,35 @@ function SignUpForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch('http://localhost:8000/user/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(formData)
     })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Signup failed');
-      }
-      return response.json();
+       if (!response.ok) {
+         throw new Error('Signup failed');
+       }
+       return response.json();
     })
     .then(data => {
-      console.log('Success:', data);
-      // Handle success here, e.g., redirect to login page
-      navigate('/login');
+       // Assuming the token is in the 'access_token' field of the response data
+       localStorage.setItem('token', data.access_token);
+       console.log(localStorage.getItem('token')); // This will log the token to the console
+       navigate('/mechines');
+       // Call the callback function passed as a prop
+       props.onLoginSuccess();
     })
     .catch(async (error) => {
-      console.error('Error:', error);
-      // If the response is not ok, log the response body for more details
-      if (error.response) {
-        const errorData = await error.response.json();
-        console.error('Error Data:', errorData);
-      }
+       console.error('Error:', error);
+       // If the response is not ok, log the response body for more details
+       if (error.response) {
+         const errorData = await error.response.json();
+         console.error('Error Data:', errorData);
+       }
     });
-  };
-
+   };
   return (
     <section className="h-100 m-5">
       <div className="container h-100">
@@ -59,14 +62,14 @@ function SignUpForm() {
                 <form onSubmit={handleSubmit} className="needs-validation" noValidate autoComplete="off">
                   <div className="mb-3">
                     <label className="mb-2 text-muted" htmlFor="name">Name</label>
-                    <input id="name" type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required autoFocus />
+                    <input id="username" type="text" className="form-control" name="username" value={formData.username} onChange={handleChange} required autoFocus />
                     <div className="invalid-feedback">
                       Name is required
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="mb-2 text-muted" htmlFor="email">E-Mail Address</label>
-                    <input id="email" type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
+                    <input id="email" type="email" className="form-control" name="email" onChange={handleChange} required />
                     <div className="invalid-feedback">
                       Email is invalid
                     </div>

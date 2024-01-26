@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function LogInForm() {
+function LogInForm(props) {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
-    remember: false
   });
   const navigate = useNavigate();
 
@@ -17,27 +16,38 @@ function LogInForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:8000/user/login', {
+// ...
+const handleSubmit = (e) => {
+ e.preventDefault();
+ fetch('http://localhost:8000/user/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      setTimeout(() => {
-        navigate('/')
-      }, 1000);
-    })
-    .catch((error) => {
+ })
+ .then(response => {
+      if (response.ok) {
+          return response.json();
+      } else {
+          throw new Error('Login failed');
+      }
+ })
+ .then(data => {
+      // Save the token somewhere (localStorage, sessionStorage, etc.)
+      localStorage.setItem('token', data.access_token);
+      // Call the callback function passed as a prop
+      props.onLoginSuccess();
+
+      // Redirect to another page
+      window.location.href = "/mechines";
+ })
+ .catch((error) => {
       console.error('Error:', error);
       // Handle errors here
-    });
-  };
+ });
+};
+// ...
 
   return (
     <section className="h-100">
@@ -50,10 +60,10 @@ function LogInForm() {
                 <h1 className="fs-4 card-title fw-bold mb-4">Login</h1>
                 <form onSubmit={handleSubmit} className="needs-validation" noValidate autoComplete="off">
                   <div className="mb-3">
-                    <label className="mb-2 text-muted" htmlFor="email">E-Mail Address</label>
-                    <input id="email" type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required autoFocus />
+                    <label className="mb-2 text-muted" htmlFor="username">Username</label>
+                    <input id="username" type="text" className="form-control" name="username" value={formData.username} onChange={handleChange} required autoFocus />
                     <div className="invalid-feedback">
-                      Email is invalid
+                      Username is invalid
                     </div>
                   </div>
 

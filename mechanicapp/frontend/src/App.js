@@ -1,9 +1,10 @@
-import React from "react";
+import React,{ useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import HeaderComponent from "./assets/header";
 import FooterComponent from "./assets/footer"
@@ -16,24 +17,38 @@ import MechinesComponent from "./components/mechines-list";
 import MechineComponent from "./components/Mechine";
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    // Check if a token exists in local storage
+    return localStorage.getItem('token');
+ });
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+  // const navigate = useNavigate();
+
+    // const handleLogout = () => {
+    //   setIsLoggedIn(false);
+    //   localStorage.removeItem('token'); // Remove the token from local storage
+    //   navigate('/')
+    // }
   return (
     <Router>
-      <HeaderComponent />
-      <Routes>
-        <Route path="/" element={ <HomeComponent /> }/>
-        <Route path="/signup" element={ <SignUpFormComponent/> }/>
-        <Route path="/login" element={ <LogInFormComponent/> }/>
-        {/* <Route path="/user" Component={ User }></Route> */}
-        <Route path="/mechines" element={ <MechinesComponent/> }/>
-        <Route path="/mechines/:mechineId" element={ <MechineComponent/> }/>
-        <Route path="/about" element={ <AboutComponent/> }/>
-        <Route path="*" element={ <NotFoundComponent/> }/>
-
-      </Routes>
-
-      <FooterComponent />
+       <HeaderComponent isLoggedIn={isLoggedIn} />
+       <Routes>
+        
+             <Route path="/" element={ <HomeComponent /> }/>
+             <Route path="/mechines" element={ <MechinesComponent/> }/>
+             <Route path="/mechines/:mechineId" element={ <MechineComponent/> }/>
+             {/* <Route path="/logout" element={ <LogOutPage onLogout={handleLogout} /> }/> */}
+             <Route path="/signup" element={ <SignUpFormComponent onLoginSuccess={handleLogin} />  }/>
+             <Route path="/login" element={ <LogInFormComponent onLoginSuccess={handleLogin} /> }/>
+             <Route path="/about" element={ <AboutComponent/> }/>
+         <Route path="*" element={ <NotFoundComponent/> }/>
+       </Routes>
+       <FooterComponent />
     </Router>
-  );
+   );
 }
 
 export default App;

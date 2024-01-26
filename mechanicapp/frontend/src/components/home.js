@@ -10,8 +10,6 @@ import Button from 'react-bootstrap/Button';
 
 
 
-
-
 function Home() {
   return (
     // <>
@@ -31,33 +29,26 @@ function Home() {
     // </>
 
     <>
-      <Carousel style={{height: '500px', overflow: 'hidden', marginBottom:'3rem'}}   fade >
-
+      <Carousel style={{height: '500px', overflow: 'hidden', marginBottom:'3rem'}} fade >
         <Carousel.Item interval={4000}>
           <Image
-                
+          className=''
                 fluid
                 src={slider1}
                 alt="me"
-                
-                
             />
-            <Carousel.Caption  style={{top:'30px', }}>
+            <Carousel.Caption  style={{top:'30px',}}>
               <h3>Welcome to Our Mechanic shop</h3>
               <p>We offer only the best services</p>
               <Button href="/about">Learn more</Button>
             </Carousel.Caption>
-          
         </Carousel.Item>
-
+        
         <Carousel.Item interval={4000}>
           <Image
-                
                 fluid
-                src={slider2}
+                src={slider2} 
                 alt="me"
-                
-                
             />
 
             <Carousel.Caption style={{top:'30px', color:'black'}}>
@@ -75,8 +66,6 @@ function Home() {
                 fluid
                 src={slider3}
                 alt="me"
-                
-                
             />
             <Carousel.Caption style={{top:'30px', color:'black'}}>
               <h3>Welcome to Our Mechanic shop</h3>
@@ -87,7 +76,7 @@ function Home() {
         </Carousel.Item>
 
       </Carousel>
-      <h2 style={{textAlign:'center'}}>Our Services  </h2>
+      <h2 style={{textAlign:'center'}}>Our Services</h2>
       <Cards />
     </>   
   );
