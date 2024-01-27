@@ -39,7 +39,7 @@ function Cards() {
                 <Card.Text>
                     You can read more about us
                 </Card.Text>
-                <Button href="/about" style={{}} variant="dark">About us</Button>
+                <Button href="/about" style={{}} variant="primary">About us</Button>
                 
             </Card.Body>
             </Card>
