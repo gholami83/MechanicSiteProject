@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 
-function FiveInputForm() {
+function ServiceComponent() {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [input3, setInput3] = useState('');
@@ -69,4 +69,4 @@ function FiveInputForm() {
     );
 }
 
-export default FiveInputForm;
+export default ServiceComponent;

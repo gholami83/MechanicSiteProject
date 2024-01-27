@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 
-function ThreeInputForm() {
+function CarComponent() {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [input3, setInput3] = useState('');
@@ -24,7 +24,23 @@ function ThreeInputForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Input 1: ${input1}, Input 2: ${input2}, Input 3: ${input3}`);
+    
+        fetch('http://localhost:8000/admin/car', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                input1: input1,
+                input2: input2,
+                input3: input3,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     };
 
     return (
@@ -53,4 +69,4 @@ function ThreeInputForm() {
     );
 }
 
-export default ThreeInputForm;
+export default CarComponent;

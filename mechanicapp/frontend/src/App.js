@@ -15,6 +15,9 @@ import AboutComponent from "./components/about";
 import NotFoundComponent from "./components/notfound";
 import MechinesComponent from "./components/mechines-list";
 import MechineComponent from "./components/Mechine";
+import CarComponent from "./components/car";
+import ServiceComponent from "./components/service";
+import AdminComponent from "./components/admin";
 
 function App() {
 
@@ -42,6 +45,9 @@ function App() {
              <Route path="/mechines/:mechineId" element={ <MechineComponent/> }/>
              {/* <Route path="/logout" element={ <LogOutPage onLogout={handleLogout} /> }/> */}
              <Route path="/signup" element={ <SignUpFormComponent onLoginSuccess={handleLogin} />  }/>
+             <Route path="/car" element={ <CarComponent/>  }/>
+             <Route path="/service" element={ <ServiceComponent/>  }/>
+             <Route path="/admin" element={ <AdminComponent/>}/>
              <Route path="/login" element={ <LogInFormComponent onLoginSuccess={handleLogin} /> }/>
              <Route path="/about" element={ <AboutComponent/> }/>
          <Route path="*" element={ <NotFoundComponent/> }/>
