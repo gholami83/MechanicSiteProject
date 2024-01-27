@@ -13,4 +13,5 @@ li{
 .display-text{
     display: inline;
     width: 75%;
+    color: blue;
 }
