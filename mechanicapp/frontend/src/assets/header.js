@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/images/logo1.png";
-
+import Icon from './icon';
+import { ThemeContext } from './icon';
 function Header({ isLoggedIn }) {
   return (
     <Navbar expand="lg" className=" ">
@@ -33,6 +34,7 @@ function Header({ isLoggedIn }) {
               <Nav.Link href="/mechines">Mechines</Nav.Link>
             )}
             <Nav.Link href="/about">About</Nav.Link>
+            <Icon/>
           </Nav>
         </Navbar.Collapse>
       </Container>
